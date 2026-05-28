@@ -12,7 +12,7 @@ import { FaEnvelope, FaPhoneAlt, FaMapMarkerAlt } from "react-icons/fa";
 
 import { Link } from "react-router-dom";
 
-import Logo from "../assets/logo.png";
+import logo from "../assets/logo.png";
 
 function Footer() {
   return (
@@ -49,7 +49,7 @@ function Footer() {
             }}
           >
             <img
-              src={Logo}
+              src={logo}
               alt="logo"
               style={{
                 width: "130px",
