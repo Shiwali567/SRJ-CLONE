@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
-import logo from "../assets/logo.png";
+import Logo from "../assets/Logo.png";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -58,7 +58,7 @@ function Navbar() {
               }}
             >
               <img
-                src={logo}
+                src={Logo}
                 alt="logo"
                 style={{
                   width: "70px",
