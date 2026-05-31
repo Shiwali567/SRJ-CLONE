@@ -93,7 +93,7 @@ function Services() {
       >
         <h1
           style={{
-            fontSize: "clamp(40px,5vw,80px)",
+            fontSize: "clamp(30px,5vw,48px)",
             fontWeight: "900",
             background: "linear-gradient(to right,#009dff,#2563eb)",
             WebkitBackgroundClip: "text",
@@ -106,7 +106,7 @@ function Services() {
 
         <p
           style={{
-            fontSize: "20px",
+            fontSize: "16px",
             color: "#475569",
             maxWidth: "800px",
             margin: "auto",
@@ -125,27 +125,28 @@ function Services() {
         style={{
           display: "grid",
           gridTemplateColumns: "380px 1fr",
-          gap: "40px",
-          alignItems: "start",
+          gap: "30px",
+          alignItems: "stretch",
           maxWidth: "1700px",
           margin: "auto",
         }}
       >
         {/* LEFT SCROLLING CARDS */}
-
         <div
           className="leftScroll"
           style={{
-            height: "1000px",
+            maxHeight: "calc(100vh - 140px)",
             overflowY: "auto",
             paddingRight: "10px",
+            position: "sticky",
+            top: "120px",
           }}
         >
           <div
             style={{
               display: "flex",
               flexDirection: "column",
-              gap: "25px",
+              gap: "15px",
             }}
           >
             {services.map((service, index) => (
@@ -178,7 +179,7 @@ function Services() {
                     alignItems: "center",
                     justifyContent: "center",
                     color: "white",
-                    fontSize: "30px",
+                    fontSize: "25px",
                     marginBottom: "22px",
                   }}
                 >
@@ -203,7 +204,7 @@ function Services() {
 
                 <p
                   style={{
-                    fontSize: "17px",
+                    fontSize: "14px",
                     color: "#475569",
                     lineHeight: "1.9",
                   }}
@@ -226,6 +227,7 @@ function Services() {
             boxShadow: "0 15px 40px rgba(0,0,0,0.08)",
             position: "sticky",
             top: "120px",
+            minHeight: "calc(100vh - 140px)",
           }}
         >
           {/* BIG ICON */}
@@ -251,7 +253,7 @@ function Services() {
 
           <h1
             style={{
-              fontSize: "clamp(40px,4vw,70px)",
+              fontSize: "clamp(40px,4vw,50px)",
               color: "#0f172a",
               fontWeight: "900",
               marginBottom: "25px",
@@ -273,44 +275,6 @@ function Services() {
           >
             {selectedService.desc}
           </p>
-
-          {/* BOX */}
-
-          <div
-            style={{
-              background: "#f8fbff",
-              border: "1px solid #dbeafe",
-              borderRadius: "30px",
-              padding: "40px",
-            }}
-          >
-            <h3
-              style={{
-                fontSize: "32px",
-                color: "#2563eb",
-                marginBottom: "25px",
-                fontWeight: "800",
-              }}
-            >
-              Why Choose This Service?
-            </h3>
-
-            <ul
-              style={{
-                paddingLeft: "25px",
-                color: "#475569",
-                lineHeight: "2.2",
-                fontSize: "20px",
-              }}
-            >
-              <li>Modern and scalable solutions</li>
-              <li>Professional expert support</li>
-              <li>Fast and secure implementation</li>
-              <li>Premium user experience</li>
-              <li>Business-focused strategy</li>
-              <li>Long-term growth focused development</li>
-            </ul>
-          </div>
         </div>
       </div>
 
@@ -380,6 +344,25 @@ function Services() {
               padding:20px !important;
             }
           }
+            .servicesGrid {
+  display: grid !important;
+  grid-template-columns: 380px 1fr !important;
+  gap: 30px !important;
+  align-items: start !important;
+}
+
+.leftScroll {
+  scrollbar-width: thin;
+}
+
+.leftScroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.leftScroll::-webkit-scrollbar-thumb {
+  background: #2563eb;
+  border-radius: 20px;
+}
         `}
       </style>
     </div>

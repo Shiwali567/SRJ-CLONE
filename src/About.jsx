@@ -176,54 +176,60 @@ function About() {
 
           @media(max-width:1200px){
 
-            .aboutGrid{
-              grid-template-columns:1fr !important;
-            }
+  .aboutGrid{
+    grid-template-columns:1fr !important;
+  }
 
-            .whyGrid{
-              grid-template-columns:1fr !important;
-            }
+  .whyGrid{
+    grid-template-columns:1fr !important;
+  }
 
-            .centerCircle{
-              margin:50px auto;
-            }
-          }
+  .centerCircle{
+    margin:50px auto !important;
+    width:320px !important;
+    height:320px !important;
+  }
+}
+  @media(max-width:768px){
 
-          @media(max-width:768px){
+  .heroHeading{
+    font-size:42px !important;
+    line-height:58px !important;
+  }
 
-            .heroHeading{
-              font-size:42px !important;
-              line-height:58px !important;
-            }
+  .heroText{
+    font-size:18px !important;
+    line-height:34px !important;
+  }
 
-            .heroText{
-              font-size:18px !important;
-              line-height:34px !important;
-            }
+  .sectionHeading{
+    font-size:42px !important;
+    line-height:58px !important;
+  }
 
-            .sectionHeading{
-              font-size:42px !important;
-              line-height:58px !important;
-            }
+  .sectionText{
+    font-size:18px !important;
+    line-height:34px !important;
+  }
 
-            .sectionText{
-              font-size:18px !important;
-              line-height:34px !important;
-            }
+  .statsBox h2{
+    font-size:40px !important;
+  }
 
-            .statsBox h2{
-              font-size:40px !important;
-            }
+  .statsBox p{
+    font-size:18px !important;
+  }
 
-            .statsBox p{
-              font-size:18px !important;
-            }
+  .centerCircle{
+    width:280px !important;
+    height:280px !important;
+  }
 
-            .circleText{
-              font-size:30px !important;
-            }
-          }
-
+  .circleText{
+    font-size:30px !important;
+    line-height:42px !important;
+  }
+}
           @media(max-width:500px){
 
             .heroHeading{
@@ -261,7 +267,7 @@ function About() {
         <h1
           className="heroHeading"
           style={{
-            fontSize: "58px",
+            fontSize: "39px",
             fontWeight: "700",
             lineHeight: "78px",
             marginBottom: "25px",
@@ -376,7 +382,7 @@ function About() {
           display: "grid",
           gridTemplateColumns: "1fr 1fr",
           alignItems: "center",
-          gap: "60px",
+          gap: "20px",
         }}
       >
         {/* LEFT */}
@@ -384,28 +390,39 @@ function About() {
           <h2
             className="sectionHeading"
             style={{
-              fontSize: "68px",
-              lineHeight: "85px",
+              fontSize: "39px",
+              lineHeight: "45px",
               color: "#0b49d8",
               marginBottom: "35px",
               fontWeight: "700",
             }}
           >
-            Leading Website <br />
-            Development Agency in <br />
-            Noida, India
+            Leading Website Development
+            <br />
+            Agency in Noida, India
+            <br />
           </h2>
 
           <p
             className="sectionText"
             style={{
-              fontSize: "24px",
+              fontSize: "18px",
               lineHeight: "45px",
               color: "#555",
             }}
           >
             Our site developers give master web application advancement and
-            website architecture administrations to our clients.
+            website architecture administrations to our clients. SRJ Global
+            Technologies offers an assortment of web composition and improvement
+            administrations, from making portable web advancement arrangements
+            and responsive web architectures, to building custom web based
+            business and intranet encounters utilizing the most recent and
+            demonstrated web technologies. <br />
+            With up to 85% of customers visiting a company’s or service
+            provider’s site before making a purchase, more buyers now make
+            decisions based on their online experience: the appearance,
+            usability, and accessibility of your website matter more than
+            ever—especially in an increasingly competitive market.
           </p>
         </div>
 
@@ -436,6 +453,160 @@ function About() {
               }}
             />
           </div>
+        </div>
+      </section>
+      {/* WHY CHOOSE US */}
+      <section
+        className="whyGrid"
+        style={{
+          padding: "80px 8%",
+          display: "grid",
+          gridTemplateColumns: "1fr 420px 1fr",
+          alignItems: "center",
+          gap: "40px",
+        }}
+      >
+        {/* LEFT */}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "50px",
+          }}
+        >
+          {[
+            [
+              "🏆",
+              "High Quality",
+              "We provide top-notch services and solutions with precision and quality.",
+            ],
+            [
+              "⏰",
+              "Timely Delivery",
+              "Our projects are always delivered on time, every time.",
+            ],
+          ].map((item, index) => (
+            <div
+              key={index}
+              className="hoverCard"
+              style={{
+                textAlign: "center",
+                background: "white",
+                padding: "30px",
+                borderRadius: "25px",
+                boxShadow: "0 10px 30px rgba(0,0,0,.08)",
+              }}
+            >
+              <div style={{ fontSize: "55px" }}>{item[0]}</div>
+
+              <h3
+                style={{
+                  fontSize: "32px",
+                  margin: "20px 0",
+                }}
+              >
+                {item[1]}
+              </h3>
+
+              <p
+                style={{
+                  color: "#555",
+                  lineHeight: "32px",
+                  fontSize: "18px",
+                }}
+              >
+                {item[2]}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* CENTER */}
+        <div
+          className="centerCircle pulse"
+          style={{
+            width: "380px",
+            height: "380px",
+            borderRadius: "50%",
+            margin: "auto",
+            background: "linear-gradient(135deg,#00bfff,#4f46e5)",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            textAlign: "center",
+            color: "white",
+            boxShadow: "0 0 60px rgba(0,102,255,.35)",
+          }}
+        >
+          <h2
+            className="circleText"
+            style={{
+              fontSize: "42px",
+              lineHeight: "60px",
+              padding: "30px",
+            }}
+          >
+            Why Choose
+            <br />
+            SRJ Global
+            <br />
+            Technologies
+          </h2>
+        </div>
+
+        {/* RIGHT */}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "50px",
+          }}
+        >
+          {[
+            [
+              "🎧",
+              "Customer Support",
+              "We offer dedicated support that listens and responds promptly.",
+            ],
+            [
+              "🤝",
+              "Trusted Team",
+              "Our team is trusted by clients worldwide for reliability and integrity.",
+            ],
+          ].map((item, index) => (
+            <div
+              key={index}
+              className="hoverCard"
+              style={{
+                textAlign: "center",
+                background: "white",
+                padding: "30px",
+                borderRadius: "25px",
+                boxShadow: "0 10px 30px rgba(0,0,0,.08)",
+              }}
+            >
+              <div style={{ fontSize: "55px" }}>{item[0]}</div>
+
+              <h3
+                style={{
+                  fontSize: "32px",
+                  margin: "20px 0",
+                }}
+              >
+                {item[1]}
+              </h3>
+
+              <p
+                style={{
+                  color: "#555",
+                  lineHeight: "32px",
+                  fontSize: "18px",
+                }}
+              >
+                {item[2]}
+              </p>
+            </div>
+          ))}
         </div>
       </section>
     </div>

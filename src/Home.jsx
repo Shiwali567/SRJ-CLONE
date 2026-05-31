@@ -1,8 +1,24 @@
+import { useRef } from "react";
 import { motion } from "framer-motion";
 import HeroImage from "./assets/hero.png";
 import { Link } from "react-router-dom";
 
 function Home() {
+  const scrollRef = useRef(null);
+
+  const scrollLeft = () => {
+    scrollRef.current?.scrollBy({
+      left: -750,
+      behavior: "smooth",
+    });
+  };
+
+  const scrollRight = () => {
+    scrollRef.current?.scrollBy({
+      left: 750,
+      behavior: "smooth",
+    });
+  };
   const services = [
     {
       title: "Web Development",
@@ -45,6 +61,22 @@ function Home() {
         background: "#f5f7fb",
       }}
     >
+      <style>
+        {`
+::-webkit-scrollbar{
+  height:8px;
+}
+
+::-webkit-scrollbar-thumb{
+  background:#2563eb;
+  border-radius:20px;
+}
+
+::-webkit-scrollbar-track{
+  background:#e5e7eb;
+}
+`}
+      </style>
       {/* HERO SECTION */}
       <section
         style={{
@@ -149,7 +181,7 @@ function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
             style={{
-              fontSize: "clamp(52px,6vw,95px)",
+              fontSize: "clamp(46px,6vw,95px)",
               fontWeight: "900",
               color: "white",
               lineHeight: "1.1",
@@ -164,7 +196,7 @@ function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.1 }}
             style={{
-              fontSize: "clamp(60px,7vw,110px)",
+              fontSize: "clamp(46px,7vw,110px)",
               fontWeight: "900",
               lineHeight: "1.1",
               marginBottom: "30px",
@@ -190,8 +222,7 @@ function Home() {
             }}
           >
             Websites, SEO, Branding, App Development & Marketing — all tailored
-            to grow your business, strengthen your online presence and deliver
-            premium digital experiences.
+            to grow your business, strengthen your online presence.
           </motion.p>
 
           <div
@@ -221,7 +252,7 @@ function Home() {
                   boxShadow: "0 12px 30px rgba(0,0,0,0.28)",
                 }}
               >
-                Services
+                Explore our Services
               </motion.button>
             </Link>
 
@@ -242,13 +273,12 @@ function Home() {
                   backdropFilter: "blur(10px)",
                 }}
               >
-                Contact Us
+                Get Free Quote
               </motion.button>
             </Link>
           </div>
         </div>
       </section>
-
       {/* STATS SECTION */}
       <section
         style={{
@@ -318,12 +348,12 @@ function Home() {
           ))}
         </div>
       </section>
-
+      ```jsx
       {/* SERVICES SECTION */}
       <section
         style={{
-          padding: "120px 20px",
-          background: "#ffffff",
+          padding: "100px 20px",
+          background: "#f8f9fb",
         }}
       >
         <div
@@ -332,119 +362,237 @@ function Home() {
             margin: "0 auto",
           }}
         >
-          <motion.h2
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-            viewport={{ once: true }}
-            style={{
-              textAlign: "center",
-              fontSize: "clamp(42px,5vw,72px)",
-              fontWeight: "900",
-              color: "#111827",
-              marginBottom: "20px",
-            }}
-          >
-            Our Services
-          </motion.h2>
-
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 1 }}
-            viewport={{ once: true }}
-            style={{
-              textAlign: "center",
-              maxWidth: "920px",
-              margin: "0 auto 80px",
-              fontSize: "22px",
-              color: "#6b7280",
-              lineHeight: "1.9",
-            }}
-          >
-            We provide powerful digital solutions using modern technologies and
-            creative strategies to help businesses scale faster online.
-          </motion.p>
-
+          {/* TOP AREA */}
           <div
             style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit,minmax(320px,1fr))",
-              gap: "35px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              gap: "50px",
+              flexWrap: "wrap",
+              marginBottom: "60px",
+            }}
+          >
+            {/* CIRCLE */}
+            <div
+              style={{
+                width: "280px",
+                height: "280px",
+                borderRadius: "50%",
+                background: "linear-gradient(135deg,#0d6efd 0%,#38bdf8 100%)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: "white",
+                fontWeight: "800",
+                fontSize: "40px",
+                textAlign: "center",
+                boxShadow: "0 15px 40px rgba(13,110,253,.25)",
+              }}
+            >
+              OUR
+              <br />
+              SERVICES
+            </div>
+
+            {/* RIGHT CONTENT */}
+            <div
+              style={{
+                flex: 1,
+                minWidth: "300px",
+              }}
+            >
+              <h2
+                style={{
+                  color: "#0d47e8",
+                  fontSize: "clamp(40px,4vw,48px)",
+                  fontWeight: "800",
+                  marginBottom: "20px",
+                }}
+              >
+                Delivering Innovative Digital Solutions in India
+              </h2>
+
+              <p
+                style={{
+                  color: "#444",
+                  fontSize: "16px",
+                  lineHeight: "1.9",
+                  maxWidth: "850px",
+                }}
+              >
+                SRJ Global Technologies is your trusted partner in website
+                development, UI/UX design, software solutions and online
+                branding. We combine technology with creativity to help your
+                business grow.
+              </p>
+
+              <button
+                style={{
+                  marginTop: "25px",
+                  background: "linear-gradient(to right,#0d6efd,#38bdf8)",
+                  border: "none",
+                  color: "#fff",
+                  padding: "15px 35px",
+                  borderRadius: "40px",
+                  fontSize: "16px",
+                  fontWeight: "600",
+                  cursor: "pointer",
+                }}
+              >
+                Enquire Now →
+              </button>
+            </div>
+          </div>
+
+          {/* SERVICE CARDS */}
+          <div
+            ref={scrollRef}
+            style={{
+              display: "flex",
+              gap: "20px",
+              overflowX: "auto",
+              paddingBottom: "15px",
+              scrollBehavior: "smooth",
             }}
           >
             {services.map((service, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 70 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 0.8,
-                  delay: index * 0.12,
-                }}
-                viewport={{ once: true }}
-                whileHover={{
-                  y: -14,
-                  scale: 1.02,
-                }}
+                whileHover={{ y: -6 }}
                 style={{
-                  background: "linear-gradient(135deg,#ffffff,#f4f7ff)",
-                  padding: "45px 35px",
-                  borderRadius: "32px",
-                  boxShadow: "0 18px 40px rgba(0,0,0,0.08)",
-                  cursor: "pointer",
-                  border: "1px solid #eef2ff",
+                  minWidth: "700px",
+                  background: "#fff",
+                  borderRadius: "20px",
+                  overflow: "hidden",
+                  boxShadow: "0 10px 30px rgba(0,0,0,0.08)",
+                  flexShrink: 0,
                 }}
               >
                 <div
                   style={{
-                    width: "85px",
-                    height: "85px",
-                    borderRadius: "24px",
-                    background: "linear-gradient(to right,#2563eb,#7c3aed)",
                     display: "flex",
                     alignItems: "center",
-                    justifyContent: "center",
-                    fontSize: "38px",
-                    color: "white",
-                    marginBottom: "28px",
-                    boxShadow: "0 12px 25px rgba(37,99,235,0.25)",
+                    minHeight: "300px",
                   }}
                 >
-                  {service.icon}
+                  <div
+                    style={{
+                      flex: 1,
+                      padding: "40px",
+                    }}
+                  >
+                    <div
+                      style={{
+                        fontSize: "20px",
+                        marginBottom: "15px",
+                      }}
+                    >
+                      {service.icon}
+                    </div>
+
+                    <h3
+                      style={{
+                        color: "#0d47e8",
+                        fontSize: "24px",
+                        marginBottom: "15px",
+                      }}
+                    >
+                      {service.title}
+                    </h3>
+
+                    <p
+                      style={{
+                        color: "#555",
+                        lineHeight: "1.8",
+                        fontSize: "16px",
+                      }}
+                    >
+                      {service.desc}
+                    </p>
+
+                    <div
+                      style={{
+                        marginTop: "20px",
+                        color: "#0d6efd",
+                        fontWeight: "600",
+                      }}
+                    >
+                      Read More →
+                    </div>
+                  </div>
+
+                  <div
+                    style={{
+                      flex: 1,
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      padding: "20px",
+                    }}
+                  >
+                    <img
+                      src={HeroImage}
+                      alt=""
+                      style={{
+                        width: "100%",
+                        maxWidth: "250px",
+                        objectFit: "contain",
+                      }}
+                    />
+                  </div>
                 </div>
-
-                <h3
-                  style={{
-                    fontSize: "32px",
-                    fontWeight: "800",
-                    color: "#111827",
-                    marginBottom: "18px",
-                  }}
-                >
-                  {service.title}
-                </h3>
-
-                <p
-                  style={{
-                    fontSize: "18px",
-                    color: "#6b7280",
-                    lineHeight: "1.9",
-                  }}
-                >
-                  {service.desc}
-                </p>
               </motion.div>
             ))}
           </div>
-
-          {/* CONTACT SECTION BUTTON */}
-          <div
+        </div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            gap: "20px",
+            marginTop: "30px",
+          }}
+        >
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={scrollLeft}
             style={{
-              textAlign: "center",
-              marginTop: "80px",
+              width: "60px",
+              height: "60px",
+              borderRadius: "50%",
+              border: "none",
+              cursor: "pointer",
+              fontSize: "24px",
+              fontWeight: "bold",
+              color: "white",
+              background: "linear-gradient(135deg,#2563eb,#3b82f6)",
+              boxShadow: "0 10px 25px rgba(37,99,235,.25)",
             }}
-          ></div>
+          >
+            ←
+          </motion.button>
+
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={scrollRight}
+            style={{
+              width: "60px",
+              height: "60px",
+              borderRadius: "50%",
+              border: "none",
+              cursor: "pointer",
+              fontSize: "24px",
+              fontWeight: "bold",
+              color: "white",
+              background: "linear-gradient(135deg,#2563eb,#3b82f6)",
+              boxShadow: "0 10px 25px rgba(37,99,235,.25)",
+            }}
+          >
+            →
+          </motion.button>
         </div>
       </section>
     </div>

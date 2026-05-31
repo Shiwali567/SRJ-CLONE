@@ -44,7 +44,7 @@ function Navbar() {
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
-              gap: "20px",
+              gap: "5px",
             }}
           >
             {/* LOGO */}
@@ -53,7 +53,7 @@ function Navbar() {
               style={{
                 display: "flex",
                 alignItems: "center",
-                gap: "12px",
+                gap: "5px",
                 textDecoration: "none",
               }}
             >
@@ -70,7 +70,7 @@ function Navbar() {
               <div>
                 <h1
                   style={{
-                    fontSize: "30px",
+                    fontSize: "18px",
                     fontWeight: "900",
                     margin: 0,
                     lineHeight: 1,
@@ -91,7 +91,7 @@ function Navbar() {
 
                 <h2
                   style={{
-                    fontSize: "17px",
+                    fontSize: "18px",
                     fontWeight: "700",
                     color: "#111827",
                     marginTop: "2px",
@@ -154,7 +154,7 @@ function Navbar() {
                 display: "none",
                 background: "none",
                 border: "none",
-                fontSize: "34px",
+                fontSize: "30px",
                 cursor: "pointer",
               }}
             >
