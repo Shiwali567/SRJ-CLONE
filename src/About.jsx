@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import blogHero1 from "./assets/about.jpg";
+
 function About() {
   const navigate = useNavigate();
 
@@ -9,268 +10,127 @@ function About() {
         background: "#f8f8f8",
         minHeight: "100vh",
         fontFamily: "'Poppins', sans-serif",
-        overflow: "hidden",
         color: "#111",
       }}
     >
-      {/* CSS ANIMATION */}
+      {/* GLOBAL CSS */}
       <style>
         {`
-          *{
-            box-sizing:border-box;
+          *{ box-sizing:border-box; }
+          html{ scroll-behavior:smooth; }
+
+          /* ANIMATIONS */
+          @keyframes fadeUp {
+            from { opacity:0; transform:translateY(40px); }
+            to { opacity:1; transform:translateY(0); }
           }
 
-          html{
-            scroll-behavior:smooth;
+          @keyframes float {
+            0% { transform:translateY(0); }
+            50% { transform:translateY(-12px); }
+            100% { transform:translateY(0); }
           }
 
-          @keyframes fadeUp{
-            from{
-              opacity:0;
-              transform:translateY(60px);
-            }
-            to{
-              opacity:1;
-              transform:translateY(0);
-            }
-          }
-
-          @keyframes zoomIn{
-            from{
-              opacity:0;
-              transform:scale(0.8);
-            }
-            to{
-              opacity:1;
-              transform:scale(1);
-            }
-          }
-
-          @keyframes float{
-            0%{
-              transform:translateY(0px);
-            }
-            50%{
-              transform:translateY(-15px);
-            }
-            100%{
-              transform:translateY(0px);
-            }
-          }
-
-          @keyframes glow{
-            0%{
-              box-shadow:0px 0px 20px rgba(0,140,255,0.2);
-            }
-            50%{
-              box-shadow:0px 0px 70px rgba(0,140,255,0.45);
-            }
-            100%{
-              box-shadow:0px 0px 20px rgba(0,140,255,0.2);
-            }
-          }
-
-          @keyframes videoFloatLeft{
-            0%{
-              transform:translateX(0px) translateY(0px);
-            }
-
-            25%{
-              transform:translateX(-18px) translateY(-12px);
-            }
-
-            50%{
-              transform:translateX(0px) translateY(-20px);
-            }
-
-            75%{
-              transform:translateX(18px) translateY(-12px);
-            }
-
-            100%{
-              transform:translateX(0px) translateY(0px);
-            }
-          }
-
-          @keyframes videoFloatRight{
-            0%{
-              transform:translateX(0px) translateY(0px);
-            }
-
-            25%{
-              transform:translateX(18px) translateY(-12px);
-            }
-
-            50%{
-              transform:translateX(0px) translateY(-20px);
-            }
-
-            75%{
-              transform:translateX(-18px) translateY(-12px);
-            }
-
-            100%{
-              transform:translateX(0px) translateY(0px);
-            }
-          }
-
-          @keyframes pulse{
-            0%{
-              transform:scale(1);
-            }
-
-            50%{
-              transform:scale(1.08);
-            }
-
-            100%{
-              transform:scale(1);
-            }
-          }
-
-          .fadeUp{
-            animation:fadeUp 1s ease forwards;
-          }
-
-          .zoomIn{
-            animation:zoomIn 1.2s ease forwards;
-          }
-
-          .floating{
-            animation:float 4s ease-in-out infinite;
-          }
-
-          .glow{
-            animation:glow 3s ease-in-out infinite;
-          }
-
-          .videoLeft{
-            animation:videoFloatLeft 6s ease-in-out infinite;
-          }
-
-          .videoRight{
-            animation:videoFloatRight 6s ease-in-out infinite;
-          }
-
-          .pulse{
-            animation:pulse 4s ease-in-out infinite;
-          }
+          .fadeUp { animation:fadeUp 0.8s ease forwards; }
+          .floating { animation:float 4s ease-in-out infinite; }
 
           .hoverCard{
-            transition:0.4s;
+            transition:0.3s ease;
           }
 
           .hoverCard:hover{
-            transform:translateY(-12px) scale(1.03);
-            box-shadow:0px 20px 40px rgba(0,0,0,0.12);
+            transform:translateY(-8px);
+            box-shadow:0 15px 35px rgba(0,0,0,0.12);
           }
 
           .heroBtn{
-            transition:0.4s;
+            transition:0.3s ease;
           }
 
           .heroBtn:hover{
-            transform:scale(1.08);
-            box-shadow:0px 15px 35px rgba(0,102,255,0.4);
+            transform:scale(1.05);
+            box-shadow:0 12px 30px rgba(0,102,255,0.35);
           }
 
-          @media(max-width:1200px){
+          /* TABLET */
+          @media(max-width: 1024px){
+            .aboutGrid{
+              grid-template-columns:1fr !important;
+            }
 
-  .aboutGrid{
-    grid-template-columns:1fr !important;
-  }
+            .whyGrid{
+              grid-template-columns:1fr !important;
+              gap:30px !important;
+            }
 
-  .whyGrid{
-    grid-template-columns:1fr !important;
-  }
+            .statsRow{
+              flex-wrap:wrap !important;
+              justify-content:center !important;
+            }
 
-  .centerCircle{
-    margin:50px auto !important;
-    width:320px !important;
-    height:320px !important;
-  }
-}
-  @media(max-width:768px){
+            .statsBox{
+              min-width:45% !important;
+            }
+          }
 
-  .heroHeading{
-    font-size:42px !important;
-    line-height:58px !important;
-  }
-
-  .heroText{
-    font-size:18px !important;
-    line-height:34px !important;
-  }
-
-  .sectionHeading{
-    font-size:42px !important;
-    line-height:58px !important;
-  }
-
-  .sectionText{
-    font-size:18px !important;
-    line-height:34px !important;
-  }
-
-  .statsBox h2{
-    font-size:40px !important;
-  }
-
-  .statsBox p{
-    font-size:18px !important;
-  }
-
-  .centerCircle{
-    width:280px !important;
-    height:280px !important;
-  }
-
-  .circleText{
-    font-size:30px !important;
-    line-height:42px !important;
-  }
-}
-          @media(max-width:500px){
+          /* MOBILE */
+          @media(max-width: 768px){
 
             .heroHeading{
-              font-size:34px !important;
-              line-height:48px !important;
+              font-size:28px !important;
+              line-height:40px !important;
+            }
+
+            .heroText{
+              font-size:16px !important;
+              line-height:26px !important;
             }
 
             .sectionHeading{
+              font-size:26px !important;
+              line-height:38px !important;
+            }
+
+            .sectionText{
+              font-size:15px !important;
+              line-height:26px !important;
+            }
+
+            .statsBox{
+              min-width:100% !important;
+            }
+
+            .statsBox h2{
               font-size:34px !important;
-              line-height:48px !important;
             }
 
             .centerCircle{
-              width:260px !important;
-              height:260px !important;
+              width:240px !important;
+              height:240px !important;
             }
 
             .circleText{
-              font-size:24px !important;
+              font-size:20px !important;
+              line-height:28px !important;
             }
           }
         `}
       </style>
 
-      {/* HERO SECTION */}
+      {/* HERO */}
       <section
         className="fadeUp"
         style={{
-          padding: "90px 8% 60px",
+          padding: "70px 6%",
           textAlign: "center",
-          background:
-            "radial-gradient(circle at top left, rgba(0,255,170,0.18), transparent 30%)",
         }}
       >
         <h1
           className="heroHeading"
           style={{
-            fontSize: "39px",
+            fontSize: "42px",
             fontWeight: "700",
-            lineHeight: "78px",
-            marginBottom: "25px",
+            lineHeight: "58px",
             color: "#0b49d8",
           }}
         >
@@ -290,32 +150,29 @@ function About() {
           className="heroText"
           style={{
             maxWidth: "900px",
-            margin: "0 auto",
+            margin: "20px auto",
+            fontSize: "18px",
+            lineHeight: "28px",
             color: "#555",
-            fontSize: "24px",
-            lineHeight: "42px",
           }}
         >
-          At SRJ Global Technologies, we deliver digital solutions — from
-          websites and apps to branding and SEO — helping you grow in the modern
-          world.
+          At SRJ Global Technologies we deliver websites, apps, SEO and branding
+          solutions.
         </p>
 
-        {/* CONTACT BUTTON */}
         <button
           className="heroBtn"
           onClick={() => navigate("/contact")}
           style={{
-            marginTop: "40px",
-            padding: "16px 38px",
+            marginTop: "25px",
+            padding: "14px 30px",
+            borderRadius: "40px",
             border: "none",
-            borderRadius: "50px",
             background: "linear-gradient(90deg,#0052ff,#19b6ff)",
             color: "white",
-            fontSize: "20px",
+            fontSize: "16px",
             fontWeight: "600",
             cursor: "pointer",
-            boxShadow: "0px 10px 25px rgba(0,102,255,0.3)",
           }}
         >
           Contact Us
@@ -323,91 +180,66 @@ function About() {
 
         {/* STATS */}
         <div
+          className="statsRow"
           style={{
             display: "flex",
             justifyContent: "space-between",
-            flexWrap: "wrap",
-            marginTop: "90px",
-            gap: "40px",
+            gap: "20px",
+            marginTop: "60px",
           }}
         >
           {[
-            ["850+", "Clients Worldwide"],
-            ["1252+", "Successful Projects"],
-            ["10+", "Years Experience"],
-            ["24/7", "Support Available"],
-          ].map((item, index) => (
+            ["850+", "Clients"],
+            ["1252+", "Projects"],
+            ["10+", "Years"],
+            ["24/7", "Support"],
+          ].map((item, i) => (
             <div
-              key={index}
-              className={`statsBox hoverCard fadeUp ${
-                index % 2 === 0 ? "videoLeft" : "videoRight"
-              }`}
+              key={i}
+              className="statsBox hoverCard"
               style={{
-                flex: "1",
-                minWidth: "180px",
-                background: "white",
-                padding: "30px",
-                borderRadius: "25px",
-                boxShadow: "0px 10px 30px rgba(0,0,0,0.08)",
+                flex: 1,
+                background: "#fff",
+                padding: "20px",
+                borderRadius: "18px",
+                textAlign: "center",
               }}
             >
-              <h2
-                style={{
-                  fontSize: "55px",
-                  color: "#0b49d8",
-                  marginBottom: "10px",
-                }}
-              >
-                {item[0]}
-              </h2>
-
-              <p
-                style={{
-                  fontSize: "22px",
-                  color: "#555",
-                }}
-              >
-                {item[1]}
-              </p>
+              <h2 style={{ color: "#0b49d8", fontSize: "40px" }}>{item[0]}</h2>
+              <p style={{ fontSize: "16px", color: "#555" }}>{item[1]}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* SECOND SECTION */}
+      {/* ABOUT */}
       <section
         className="aboutGrid"
         style={{
-          padding: "100px 8%",
+          padding: "80px 6%",
           display: "grid",
           gridTemplateColumns: "1fr 1fr",
+          gap: "30px",
           alignItems: "center",
-          gap: "20px",
         }}
       >
-        {/* LEFT */}
-        <div className="fadeUp">
+        <div>
           <h2
             className="sectionHeading"
             style={{
-              fontSize: "39px",
-              lineHeight: "45px",
+              fontSize: "32px",
               color: "#0b49d8",
-              marginBottom: "35px",
-              fontWeight: "700",
+              marginBottom: "20px",
             }}
           >
-            Leading Website Development
-            <br />
-            Agency in Noida, India
-            <br />
+            Leading Web Development Agency in Noida, India
           </h2>
 
           <p
             className="sectionText"
             style={{
-              fontSize: "18px",
-              lineHeight: "45px",
+              fontSize: "16px",
+              lineHeight: "26px",
               color: "#555",
             }}
           >
@@ -417,8 +249,8 @@ function About() {
             administrations, from making portable web advancement arrangements
             and responsive web architectures, to building custom web based
             business and intranet encounters utilizing the most recent and
-            demonstrated web technologies. <br />
-            With up to 85% of customers visiting a company’s or service
+            demonstrated web technologies.
+            <br /> With up to 85% of customers visiting a company’s or service
             provider’s site before making a purchase, more buyers now make
             decisions based on their online experience: the appearance,
             usability, and accessibility of your website matter more than
@@ -426,185 +258,92 @@ function About() {
           </p>
         </div>
 
-        {/* RIGHT IMAGE */}
-        <div
-          className="zoomIn videoRight"
-          style={{
-            display: "flex",
-            justifyContent: "center",
-          }}
-        >
-          <div
-            className="hoverCard"
+        <div style={{ textAlign: "center" }}>
+          <img
+            src={blogHero1}
+            alt="about"
             style={{
-              background: "white",
-              borderRadius: "25px",
-              padding: "30px",
-              boxShadow: "0px 15px 35px rgba(0,0,0,0.1)",
-              width: "500px",
-              maxWidth: "100%",
+              width: "100%",
+              borderRadius: "20px",
             }}
-          >
-            <img
-              src={blogHero1}
-              alt="developer"
-              style={{
-                width: "100%",
-              }}
-            />
-          </div>
+          />
         </div>
       </section>
-      {/* WHY CHOOSE US */}
+
+      {/* WHY CHOOSE */}
       <section
         className="whyGrid"
         style={{
-          padding: "80px 8%",
+          padding: "80px 6%",
           display: "grid",
-          gridTemplateColumns: "1fr 420px 1fr",
+          gridTemplateColumns: "1fr 300px 1fr",
           alignItems: "center",
-          gap: "40px",
+          gap: "20px",
         }}
       >
         {/* LEFT */}
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "50px",
-          }}
-        >
+        <div>
           {[
-            [
-              "🏆",
-              "High Quality",
-              "We provide top-notch services and solutions with precision and quality.",
-            ],
-            [
-              "⏰",
-              "Timely Delivery",
-              "Our projects are always delivered on time, every time.",
-            ],
-          ].map((item, index) => (
+            ["🏆", "High Quality"],
+            ["⏰", "On Time Delivery"],
+          ].map((item, i) => (
             <div
-              key={index}
+              key={i}
               className="hoverCard"
               style={{
+                background: "#fff",
+                padding: "20px",
+                borderRadius: "18px",
+                marginBottom: "20px",
                 textAlign: "center",
-                background: "white",
-                padding: "30px",
-                borderRadius: "25px",
-                boxShadow: "0 10px 30px rgba(0,0,0,.08)",
               }}
             >
-              <div style={{ fontSize: "55px" }}>{item[0]}</div>
-
-              <h3
-                style={{
-                  fontSize: "32px",
-                  margin: "20px 0",
-                }}
-              >
-                {item[1]}
-              </h3>
-
-              <p
-                style={{
-                  color: "#555",
-                  lineHeight: "32px",
-                  fontSize: "18px",
-                }}
-              >
-                {item[2]}
-              </p>
+              <div style={{ fontSize: "40px" }}>{item[0]}</div>
+              <h3 style={{ fontSize: "20px" }}>{item[1]}</h3>
             </div>
           ))}
         </div>
 
         {/* CENTER */}
         <div
-          className="centerCircle pulse"
+          className="centerCircle"
           style={{
-            width: "380px",
-            height: "380px",
+            width: "280px",
+            height: "280px",
             borderRadius: "50%",
-            margin: "auto",
             background: "linear-gradient(135deg,#00bfff,#4f46e5)",
             display: "flex",
-            justifyContent: "center",
             alignItems: "center",
+            justifyContent: "center",
+            color: "#fff",
             textAlign: "center",
-            color: "white",
-            boxShadow: "0 0 60px rgba(0,102,255,.35)",
+            margin: "auto",
           }}
         >
-          <h2
-            className="circleText"
-            style={{
-              fontSize: "42px",
-              lineHeight: "60px",
-              padding: "30px",
-            }}
-          >
-            Why Choose
-            <br />
-            SRJ Global
-            <br />
-            Technologies
-          </h2>
+          <div className="circleText" style={{ fontSize: "18px" }}>
+            Why Choose SRJ Global
+          </div>
         </div>
 
         {/* RIGHT */}
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "50px",
-          }}
-        >
+        <div>
           {[
-            [
-              "🎧",
-              "Customer Support",
-              "We offer dedicated support that listens and responds promptly.",
-            ],
-            [
-              "🤝",
-              "Trusted Team",
-              "Our team is trusted by clients worldwide for reliability and integrity.",
-            ],
-          ].map((item, index) => (
+            ["🎧", "Support"],
+            ["🤝", "Trusted Team"],
+          ].map((item, i) => (
             <div
-              key={index}
+              key={i}
               className="hoverCard"
               style={{
+                background: "#fff",
+                padding: "20px",
+                borderRadius: "18px",
+                marginBottom: "20px",
                 textAlign: "center",
-                background: "white",
-                padding: "30px",
-                borderRadius: "25px",
-                boxShadow: "0 10px 30px rgba(0,0,0,.08)",
               }}
             >
-              <div style={{ fontSize: "55px" }}>{item[0]}</div>
-
-              <h3
-                style={{
-                  fontSize: "32px",
-                  margin: "20px 0",
-                }}
-              >
-                {item[1]}
-              </h3>
-
-              <p
-                style={{
-                  color: "#555",
-                  lineHeight: "32px",
-                  fontSize: "18px",
-                }}
-              >
-                {item[2]}
-              </p>
+              <div style={{ fontSize: "40px" }}>{item[0]}</div>
+              <h3 style={{ fontSize: "20px" }}>{item[1]}</h3>
             </div>
           ))}
         </div>

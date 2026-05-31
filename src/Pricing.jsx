@@ -72,91 +72,75 @@ function Pricing() {
   return (
     <>
       <style>{`
-      *{
-        box-sizing:border-box;
-      }
+     @media (max-width: 1024px) {
+  .searchBox {
+    width: 90% !important;
+  }
 
-      .pricingContainer{
-        min-height:100vh;
-        background:linear-gradient(135deg,#f7f7f7 0%, #ffffff 50%, #eef4ff 100%);
-        padding:35px;
-        font-family:'Poppins',sans-serif;
-      }
+  .mainBox {
+    padding: 35px !important;
+  }
+}
 
-      .searchBox{
-        display:flex;
-        width:700px;
-        background:white;
-        border-radius:60px;
-        overflow:hidden;
-        border:1px solid #e5e7eb;
-        box-shadow:0px 8px 25px rgba(0,0,0,0.06);
-      }
+@media (max-width: 768px) {
+  .pricingContainer {
+    padding: 20px !important;
+  }
 
-      .mainBox{
-        background:white;
-        border-radius:35px;
-        padding:50px;
-        box-shadow:0px 10px 40px rgba(0,0,0,0.08);
-      }
+  .searchBox {
+    width: 100% !important;
+  }
 
-      .pricingTitle{
-        font-size:45px;
-        line-height:70px;
-        color:#4f46e5;
-        font-weight:800;
-      }
+  .mainBox {
+    padding: 25px !important;
+    border-radius: 25px !important;
+  }
 
-      .totalPrice{
-        font-size:72px;
-        color:#00a63e;
-      }
+  .pricingTitle {
+    font-size: 32px !important;
+    line-height: 44px !important;
+  }
 
-      @media(max-width:768px){
+  .totalPrice {
+    font-size: 42px !important;
+  }
+}
 
-        .pricingContainer{
-          padding:20px;
-        }
+@media (max-width: 500px) {
+  .pricingContainer {
+    padding: 12px !important;
+  }
 
-        .searchBox{
-          width:100%;
-        }
+  .searchBox {
+    flex-direction: column !important;
+    width: 100% !important;
+    border-radius: 20px !important;
+  }
 
-        .mainBox{
-          padding:25px;
-        }
+  .searchBox input {
+    padding: 16px !important;
+  }
 
-        .pricingTitle{
-          font-size:30px;
-          line-height:42px;
-        }
+  .searchBox button {
+    width: 100% !important;
+    padding: 14px !important;
+  }
 
-        .totalPrice{
-          font-size:42px;
-        }
-      }
+  .pricingTitle {
+    font-size: 24px !important;
+    line-height: 34px !important;
+  }
 
-      @media(max-width:500px){
+  .totalPrice {
+    font-size: 34px !important;
+  }
 
-        .pricingContainer{
-          padding:12px;
-        }
-
-        .searchBox{
-          flex-direction:column;
-          width:100%;
-          border-radius:20px;
-        }
-
-        .pricingTitle{
-          font-size:24px;
-          line-height:34px;
-        }
-
-        .totalPrice{
-          font-size:34px;
-        }
-      }
+  /* buttons wrap better on mobile */
+  .categoryBtn {
+    padding: 10px 16px !important;
+    font-size: 13px !important;
+  }
+}
     `}</style>
       <div
         className="pricingContainer"
