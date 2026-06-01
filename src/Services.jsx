@@ -124,7 +124,8 @@ function Services() {
         className="servicesGrid"
         style={{
           display: "grid",
-          gridTemplateColumns: "380px 1fr",
+          // gridTemplateColumns: "380px 1fr",
+          gridTemplateColumns: "repeat(auto-fit,minmax(250px,1fr))",
           gap: "30px",
           alignItems: "stretch",
           maxWidth: "1700px",
@@ -317,6 +318,11 @@ function Services() {
               padding:40px !important;
             }
           }
+            @media (max-width:1200px){
+  .rightPanel{
+    min-height:auto !important;
+  }
+}
 
           @media(max-width:768px){
 
@@ -348,7 +354,7 @@ function Services() {
   display: grid !important;
   grid-template-columns: 380px 1fr !important;
   gap: 30px !important;
-  align-items: start !important;
+  align-items: stretch !important;
 }
 
 .leftScroll {
@@ -362,6 +368,112 @@ function Services() {
 .leftScroll::-webkit-scrollbar-thumb {
   background: #2563eb;
   border-radius: 20px;
+}
+/* =========================
+   LARGE DESKTOP
+========================= */
+@media (min-width: 1600px) {
+  .servicesGrid {
+    grid-template-columns: 420px 1fr !important;
+  }
+}
+
+/* =========================
+   LAPTOP
+========================= */
+@media (max-width: 1200px) {
+  .servicesGrid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .leftScroll {
+    position: relative !important;
+    top: 0 !important;
+    max-height: unset !important;
+    overflow: visible !important;
+    padding-right: 0 !important;
+  }
+
+  .rightPanel {
+    position: relative !important;
+    top: 0 !important;
+    min-height: auto !important;
+    margin-top: 20px !important;
+  }
+}
+
+/* =========================
+   TABLET
+========================= */
+@media (max-width: 992px) {
+  .rightPanel {
+    padding: 40px !important;
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 768px) {
+
+  .servicesGrid {
+    gap: 20px !important;
+  }
+
+  .leftScroll > div {
+    gap: 12px !important;
+  }
+
+  .leftScroll > div > div {
+    padding: 22px !important;
+  }
+
+  .rightPanel {
+    padding: 25px !important;
+    border-radius: 25px !important;
+  }
+
+  .rightPanel h1 {
+    font-size: 32px !important;
+  }
+
+  .rightPanel p {
+    font-size: 17px !important;
+    line-height: 1.8 !important;
+  }
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+@media (max-width: 480px) {
+
+  .leftScroll > div > div {
+    padding: 18px !important;
+    border-radius: 20px !important;
+  }
+
+  .rightPanel {
+    padding: 18px !important;
+  }
+
+  .rightPanel h1 {
+    font-size: 28px !important;
+  }
+
+  .rightPanel p {
+    font-size: 16px !important;
+  }
+}
+  @media (max-width:768px){
+
+  .rightPanel > div:first-child{
+    width:100px !important;
+    height:100px !important;
+    font-size:40px !important;
+    border-radius:25px !important;
+  }
+
 }
         `}
       </style>

@@ -94,6 +94,32 @@ function Footer() {
               flexWrap: "wrap",
             }}
           >
+            {/* GLOBAL CSS */}
+            {`
+             .footerGrid{
+ display:grid;
+ grid-template-columns:
+ repeat(4,1fr);
+ gap:30px;
+}
+
+@media(max-width:992px){
+
+.footerGrid{
+ grid-template-columns:
+ repeat(2,1fr);
+}
+}
+
+@media(max-width:768px){
+
+.footerGrid{
+ grid-template-columns:1fr;
+ text-align:center;
+}
+}
+
+             `}
             {[
               FaInstagram,
               FaPinterestP,

@@ -83,6 +83,132 @@ function Contact() {
         color: "#111827",
       }}
     >
+      <style>
+        {`
+
+/* ==========================
+   LAPTOP
+========================== */
+
+@media (max-width:1200px){
+
+  .contactFormBox{
+    padding:40px !important;
+  }
+
+}
+
+/* ==========================
+   TABLET
+========================== */
+
+@media (max-width:992px){
+
+  .contactTitle{
+    font-size:54px !important;
+  }
+
+  .contactSubTitle{
+    font-size:24px !important;
+  }
+
+  .contactFormBox{
+    padding:30px !important;
+    border-radius:25px !important;
+  }
+
+  .contactGrid{
+    grid-template-columns:1fr !important;
+  }
+
+}
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media (max-width:768px){
+
+  .contactTitle{
+    font-size:38px !important;
+    line-height:1.3 !important;
+  }
+
+  .contactSubTitle{
+    font-size:20px !important;
+  }
+
+  .contactFormBox{
+    padding:20px !important;
+  }
+
+  .contactGrid{
+    gap:25px !important;
+  }
+
+  .mapBox iframe{
+    height:350px !important;
+  }
+
+}
+
+/* ==========================
+   SMALL MOBILE
+========================== */
+
+@media (max-width:480px){
+
+  .contactTitle{
+    font-size:30px !important;
+  }
+
+  .contactSubTitle{
+    font-size:18px !important;
+  }
+
+  .contactFormBox{
+    padding:16px !important;
+    border-radius:20px !important;
+  }
+
+  .contactGrid{
+    grid-template-columns:1fr !important;
+  }
+
+  .mapBox iframe{
+    height:280px !important;
+    border-radius:18px !important;
+  }
+
+}
+
+/* ==========================
+   FIX OVERFLOW
+========================== */
+
+@media (max-width:768px){
+
+  input,
+  select,
+  textarea{
+    font-size:15px !important;
+  }
+.submitBtn{
+  width:auto;
+}
+
+@media(max-width:768px){
+  .submitBtn{
+    width:100%;
+  }
+
+  .mapBox iframe{
+    height:350px !important;
+  }
+}
+
+        `}
+      </style>
       {/* TOP HEADING */}
       <div
         style={{
@@ -109,6 +235,7 @@ function Contact() {
         </div>
 
         <h1
+          className="contactTitle"
           style={{
             fontSize: "72px",
             color: "#1d4ed8",
@@ -120,6 +247,7 @@ function Contact() {
         </h1>
 
         <h3
+          className="contactSubTitle"
           style={{
             color: "#4b5563",
             fontSize: "30px",
@@ -146,6 +274,7 @@ function Contact() {
       {/* MAIN BOX */}
       <form onSubmit={handleSubmit}>
         <div
+          className="contactFormBox"
           style={{
             maxWidth: "1200px",
             margin: "auto",
@@ -361,6 +490,7 @@ function Contact() {
           {/* BUTTON */}
           <div style={{ textAlign: "center" }}>
             <button
+              className="submitBtn"
               type="submit"
               disabled={loading}
               style={{
@@ -383,6 +513,7 @@ function Contact() {
 
       {/* CONTACT INFO + MAP */}
       <div
+        className="contactGrid"
         style={{
           maxWidth: "1200px",
           margin: "auto",
@@ -593,7 +724,7 @@ function Contact() {
         </div>
 
         {/* MAP */}
-        <div>
+        <div className="mapBox">
           <iframe
             title="map"
             src="https://www.google.com/maps?q=Urbtech+Trade+Center+Tower+Noida+Sector+132&output=embed"

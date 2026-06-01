@@ -141,6 +141,101 @@ function Pricing() {
     font-size: 13px !important;
   }
 }
+  /* =========================
+   LARGE LAPTOP
+========================= */
+@media (max-width: 1200px) {
+
+  .mainBox{
+    padding:40px !important;
+  }
+
+}
+
+/* =========================
+   TABLET
+========================= */
+@media (max-width: 992px) {
+
+  .pricingTitle{
+    font-size:38px !important;
+    line-height:1.4 !important;
+  }
+
+  .mainBox{
+    padding:30px !important;
+    border-radius:25px !important;
+  }
+
+  .searchBox{
+    width:100% !important;
+    max-width:700px !important;
+  }
+
+}
+
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 768px) {
+
+  .pricingContainer{
+    padding:15px !important;
+  }
+
+  .mainBox{
+    padding:22px !important;
+  }
+
+  .pricingTitle{
+    font-size:28px !important;
+    line-height:1.4 !important;
+  }
+
+  .totalPrice{
+    font-size:28px !important;
+  }
+
+  .searchBox{
+    width:100% !important;
+    border-radius:20px !important;
+  }
+
+  .searchBtn{
+    padding:0 20px !important;
+    font-size:14px !important;
+  }
+
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+@media (max-width: 480px) {
+
+  .pricingContainer{
+    padding:10px !important;
+  }
+
+  .mainBox{
+    padding:18px !important;
+    border-radius:20px !important;
+  }
+
+  .pricingTitle{
+    font-size:22px !important;
+  }
+
+  .totalPrice{
+    font-size:24px !important;
+  }
+
+  .categoryBtn{
+    width:100% !important;
+    justify-content:center !important;
+  }
+
+}
     `}</style>
       <div
         className="pricingContainer"
@@ -164,7 +259,8 @@ function Pricing() {
             className="searchBox"
             style={{
               display: "flex",
-              width: "700px",
+              width: "100%",
+              maxWidth: "700px",
               background: "white",
               borderRadius: "60px",
               overflow: "hidden",
@@ -403,7 +499,7 @@ function Pricing() {
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: "repeat(auto-fit,minmax(320px,1fr))",
+                gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))",
                 gap: "15px",
               }}
             >
@@ -521,7 +617,7 @@ function Pricing() {
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: "repeat(auto-fit,minmax(350px,1fr))",
+                gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))",
                 gap: "20px",
               }}
             >
@@ -567,6 +663,7 @@ function Pricing() {
           </div>
         </div>
         <div
+          className="whyChooseBox"
           style={{
             background: "#f8fbff",
             border: "1px solid #dbeafe",

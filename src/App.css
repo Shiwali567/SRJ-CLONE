@@ -1,5 +1,33 @@
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  overflow-x:hidden;
+  font-family:'Inter',sans-serif;
+}
+
+.container{
+  width:100%;
+  max-width:1400px;
+  margin:auto;
+  padding:0 20px;
+}
+
+@media(max-width:768px){
+  .container{
+    padding:0 15px;
+  }
+}
 .counter {
-  font-size: 16px;
+  font-size: 14px;
   padding: 5px 10px;
   border-radius: 5px;
   color: var(--accent);
@@ -182,3 +210,4 @@
     border-right-color: var(--border);
   }
 }
+

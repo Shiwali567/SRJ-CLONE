@@ -105,7 +105,8 @@ function Home() {
         <div
           style={{
             position: "absolute",
-            width: "550px",
+            width: "100%",
+            maxWidth: "550px",
             height: "550px",
             background: "#00d4ff",
             filter: "blur(180px)",
@@ -118,7 +119,8 @@ function Home() {
         <div
           style={{
             position: "absolute",
-            width: "500px",
+            width: "100%",
+            maxWidth: "500px",
             height: "500px",
             background: "#9333ea",
             filter: "blur(180px)",
@@ -138,8 +140,8 @@ function Home() {
           alt="hero"
           style={{
             position: "absolute",
-            width: "1000px",
-            maxWidth: "85%",
+            width: "100%",
+            maxWidth: "1000px",
             opacity: "0.12",
             zIndex: "1",
             objectFit: "contain",
