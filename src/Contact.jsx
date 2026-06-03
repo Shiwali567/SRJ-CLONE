@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { API_URL } from "./config/api";
 
 import {
   FaAddressBook,
@@ -13,6 +14,7 @@ function Contact() {
   // =========================
   // STATES
   // =========================
+  const [loading, setLoading] = useState(false);
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -22,8 +24,6 @@ function Contact() {
     service: "",
     message: "",
   });
-
-  const [loading, setLoading] = useState(false);
 
   // =========================
   // HANDLE INPUT
@@ -39,21 +39,16 @@ function Contact() {
   // =========================
   // HANDLE SUBMIT
   // =========================
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       setLoading(true);
 
-      const response = await axios.post(
-        "http://localhost:5000/api/contact",
-        formData,
-      );
+      const response = await axios.post(`${API_URL}/api/contact`, formData);
 
       alert(response.data.message);
 
-      // RESET FORM
       setFormData({
         firstName: "",
         lastName: "",
@@ -62,17 +57,21 @@ function Contact() {
         service: "",
         message: "",
       });
-
-      setLoading(false);
     } catch (error) {
-      console.log(error);
+      console.log("FULL ERROR:", error);
 
-      alert("Something went wrong");
-
+      if (error.response) {
+        console.log("Response:", error.response.data);
+        alert(error.response.data.message || "Server Error");
+      } else if (error.request) {
+        alert("Backend server not running");
+      } else {
+        alert(error.message);
+      }
+    } finally {
       setLoading(false);
     }
   };
-
   return (
     <div
       style={{
@@ -488,26 +487,24 @@ function Contact() {
           </div>
 
           {/* BUTTON */}
-          <div style={{ textAlign: "center" }}>
-            <button
-              className="submitBtn"
-              type="submit"
-              disabled={loading}
-              style={{
-                padding: "16px 50px",
-                border: "none",
-                borderRadius: "50px",
-                background: "linear-gradient(90deg,#2563eb,#38bdf8)",
-                color: "white",
-                fontSize: "18px",
-                fontWeight: "600",
-                cursor: "pointer",
-                boxShadow: "0 10px 25px rgba(37,99,235,0.3)",
-              }}
-            >
-              {loading ? "Submitting..." : "Submit"}
-            </button>
-          </div>
+          <button
+            className="submitBtn"
+            type="submit"
+            disabled={loading}
+            style={{
+              padding: "16px 50px",
+              border: "none",
+              borderRadius: "50px",
+              background: "linear-gradient(90deg,#2563eb,#38bdf8)",
+              color: "white",
+              fontSize: "18px",
+              fontWeight: "600",
+              cursor: loading ? "not-allowed" : "pointer",
+              boxShadow: "0 10px 25px rgba(37,99,235,0.3)",
+            }}
+          >
+            {loading ? "Sending..." : "Submit"}
+          </button>
         </div>
       </form>
 
