@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 
 function AdminDashboard() {
+  const [selectedPlan, setSelectedPlan] = useState(null);
   const navigate = useNavigate();
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
@@ -243,6 +244,7 @@ function AdminDashboard() {
               <th style={thStyle}>Company</th>
               <th style={thStyle}>Project</th>
               <th style={thStyle}>Budget</th>
+              <th style={thStyle}>Action</th>
             </tr>
           </thead>
 
@@ -256,10 +258,110 @@ function AdminDashboard() {
                 <td style={tdStyle}>{item.company_name}</td>
                 <td style={tdStyle}>{item.project_type}</td>
                 <td style={tdStyle}>{item.budget}</td>
+
+                <td style={tdStyle}>
+                  <button
+                    onClick={() => setSelectedPlan(item)}
+                    style={{
+                      background: "#1452ff",
+                      color: "#fff",
+                      border: "none",
+                      padding: "8px 14px",
+                      borderRadius: "6px",
+                      cursor: "pointer",
+                    }}
+                  >
+                    View Actions
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
+        {selectedPlan && (
+          <div
+            style={{
+              position: "fixed",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              background: "rgba(0,0,0,0.5)",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              zIndex: 999,
+            }}
+          >
+            <div
+              style={{
+                background: "#fff",
+                padding: "30px",
+                borderRadius: "12px",
+                width: "400px",
+              }}
+            >
+              <h2>{selectedPlan.full_name}</h2>
+
+              <p>
+                <strong>Phone:</strong> {selectedPlan.phone}
+              </p>
+
+              <p>
+                <strong>Email:</strong> {selectedPlan.email}
+              </p>
+
+              <div
+                style={{
+                  display: "flex",
+                  gap: "10px",
+                  marginTop: "20px",
+                  flexWrap: "wrap",
+                }}
+              >
+                {/* Call */}
+                <a href={`tel:${selectedPlan.phone}`} style={actionBtn}>
+                  📞 Call
+                </a>
+
+                {/* WhatsApp */}
+                <a
+                  href={`https://wa.me/${selectedPlan.phone}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  style={actionBtn}
+                >
+                  💬 WhatsApp
+                </a>
+
+                {/* Meeting */}
+                <button
+                  onClick={() => {
+                    alert(`Meeting scheduled with ${selectedPlan.full_name}`);
+                  }}
+                  style={actionBtn}
+                >
+                  📅 Meeting
+                </button>
+              </div>
+
+              <button
+                onClick={() => setSelectedPlan(null)}
+                style={{
+                  marginTop: "20px",
+                  background: "red",
+                  color: "#fff",
+                  border: "none",
+                  padding: "10px 15px",
+                  borderRadius: "6px",
+                  cursor: "pointer",
+                }}
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -274,5 +376,14 @@ const thStyle = {
 const tdStyle = {
   padding: "12px",
   border: "1px solid #ddd",
+};
+const actionBtn = {
+  background: "#1452ff",
+  color: "#fff",
+  textDecoration: "none",
+  border: "none",
+  padding: "10px 15px",
+  borderRadius: "6px",
+  cursor: "pointer",
 };
 export default AdminDashboard;

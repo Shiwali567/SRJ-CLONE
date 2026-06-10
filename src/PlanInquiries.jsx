@@ -32,6 +32,7 @@ function PlanInquiries() {
               <th style={th}>Company</th>
               <th style={th}>Project</th>
               <th style={th}>Budget</th>
+              <th style={th}>Action</th>
             </tr>
           </thead>
 
@@ -47,6 +48,50 @@ function PlanInquiries() {
                   <td style={td}>{item.company_name}</td>
                   <td style={td}>{item.project_type}</td>
                   <td style={td}>{item.budget}</td>
+
+                  <td style={td}>
+                    <div style={{ position: "relative" }}>
+                      <button
+                        onClick={() =>
+                          setPlans((prev) =>
+                            prev.map((p, i) => ({
+                              ...p,
+                              showMenu: i === index ? !p.showMenu : false,
+                            })),
+                          )
+                        }
+                        style={actionBtn}
+                      >
+                        Action ▼
+                      </button>
+
+                      {item.showMenu && (
+                        <div style={dropdown}>
+                          <a href={`tel:${item.phone}`} style={dropdownItem}>
+                            📞 Call
+                          </a>
+
+                          <a
+                            href={`https://wa.me/${item.phone}`}
+                            target="_blank"
+                            rel="noreferrer"
+                            style={dropdownItem}
+                          >
+                            💬 WhatsApp
+                          </a>
+
+                          <button
+                            style={meetingBtn}
+                            onClick={() =>
+                              alert(`Meeting scheduled with ${item.full_name}`)
+                            }
+                          >
+                            📅 Schedule Meeting
+                          </button>
+                        </div>
+                      )}
+                    </div>
+                  </td>
                 </tr>
               ))
             ) : (
@@ -134,4 +179,43 @@ const tdBadge = {
   color: "#fff",
   background: "#4f46e5",
   borderRadius: "6px",
+};
+const actionBtn = {
+  background: "#4f46e5",
+  color: "#fff",
+  border: "none",
+  padding: "8px 12px",
+  borderRadius: "6px",
+  cursor: "pointer",
+  fontSize: "13px",
+};
+
+const dropdown = {
+  position: "absolute",
+  top: "40px",
+  right: "0",
+  background: "#fff",
+  border: "1px solid #ddd",
+  borderRadius: "8px",
+  minWidth: "170px",
+  boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+  zIndex: 100,
+};
+
+const dropdownItem = {
+  display: "block",
+  padding: "10px 12px",
+  textDecoration: "none",
+  color: "#333",
+  borderBottom: "1px solid #eee",
+};
+
+const meetingBtn = {
+  width: "100%",
+  border: "none",
+  background: "#fff",
+  textAlign: "left",
+  padding: "10px 12px",
+  cursor: "pointer",
+  color: "#333",
 };
