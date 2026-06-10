@@ -1,7 +1,15 @@
 import { useRef } from "react";
 import { motion } from "framer-motion";
-import HeroImage from "./assets/hero.png";
+import FloatingButtons from "./FloatingButtons";
+//import HeroImage from "./assets/hero.png";
 import { Link } from "react-router-dom";
+import BackgroundImage from "./assets/backgroung.png";
+import WebImg from "./assets/web.jpg";
+import AppImg from "./assets/app.png";
+import SeoImg from "./assets/seo.png";
+import UiImg from "./assets/uiux.jpg";
+import CloudImg from "./assets/cloud.png";
+import MarketingImg from "./assets/marketing.png";
 
 function Home() {
   const scrollRef = useRef(null);
@@ -24,31 +32,37 @@ function Home() {
       title: "Web Development",
       icon: "🌐",
       desc: "Modern responsive websites with fast performance and scalable architecture.",
+      image: WebImg,
     },
     {
       title: "App Development",
       icon: "📱",
       desc: "Professional Android & iOS apps designed for performance and user experience.",
+      image: AppImg,
     },
     {
       title: "SEO Optimization",
       icon: "🚀",
       desc: "Increase rankings and drive organic traffic with advanced SEO strategies.",
+      image: SeoImg,
     },
     {
       title: "UI/UX Design",
       icon: "🎨",
       desc: "Creative and user-friendly interfaces with premium modern design.",
+      image: UiImg,
     },
     {
       title: "Cloud Solutions",
       icon: "☁️",
       desc: "Secure and scalable cloud infrastructure for modern businesses.",
+      image: CloudImg,
     },
     {
       title: "Digital Marketing",
       icon: "📈",
       desc: "Boost your business reach with social media and marketing campaigns.",
+      image: MarketingImg,
     },
   ];
 
@@ -89,8 +103,13 @@ function Home() {
           textAlign: "center",
           padding: "120px 20px 140px",
           overflow: "hidden",
-          background:
-            "linear-gradient(135deg,#015b73 0%,#1b2678 50%,#5f47d6 100%)",
+
+          backgroundImage: `url(${BackgroundImage})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          // background:
+          //   "linear-gradient(135deg,#015b73 0%,#1b2678 50%,#5f47d6 100%)",
         }}
       >
         <div
@@ -130,7 +149,7 @@ function Home() {
           }}
         />
 
-        <motion.img
+        {/* <motion.img
           animate={{ y: [0, -20, 0] }}
           transition={{
             duration: 6,
@@ -146,7 +165,7 @@ function Home() {
             zIndex: "1",
             objectFit: "contain",
           }}
-        />
+        /> */}
 
         <div
           style={{
@@ -534,8 +553,8 @@ function Home() {
                     }}
                   >
                     <img
-                      src={HeroImage}
-                      alt=""
+                      src={service.image}
+                      alt={service.title}
                       style={{
                         width: "100%",
                         maxWidth: "250px",
@@ -597,6 +616,7 @@ function Home() {
           </motion.button>
         </div>
       </section>
+      <FloatingButtons />
     </div>
   );
 }

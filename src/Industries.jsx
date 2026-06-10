@@ -1,4 +1,5 @@
 import { useState } from "react";
+import FloatingButtons from "./FloatingButtons";
 import {
   FaRocket,
   FaBuilding,
@@ -13,56 +14,307 @@ import {
 } from "react-icons/fa";
 
 function Industries() {
+  const [showDetails, setShowDetails] = useState(false);
   const services = [
     {
       title: "Business Startup",
       desc: "Launch your startup with confidence.",
       icon: <FaRocket />,
+      details:
+        "We help entrepreneurs transform innovative ideas into successful businesses through technology, branding, and strategic planning.",
+
+      features: [
+        "Startup Strategy Planning",
+        "MVP Development",
+        "Business Automation",
+        "Cloud Integration",
+        "Technology Consulting",
+      ],
+      benefits: [
+        "Faster Market Entry",
+        "Lower Development Cost",
+        "Scalable Infrastructure",
+        "Improved Brand Presence",
+        "Better Customer Acquisition",
+      ],
+
+      services: [
+        "Startup Website Development",
+        "Mobile App Development",
+        "Brand Identity Design",
+        "Digital Marketing",
+        "Business Consultation",
+      ],
     },
     {
       title: "Enterprise Service",
       desc: "Robust, scalable enterprise solutions.",
       icon: <FaBuilding />,
+      details:
+        "Enterprise solutions designed to streamline operations, improve efficiency, and support large-scale business growth.",
+
+      features: [
+        "ERP Integration",
+        "CRM Solutions",
+        "Cloud Infrastructure",
+        "Business Intelligence",
+        "Data Analytics",
+      ],
+
+      benefits: [
+        "Improved Productivity",
+        "Centralized Operations",
+        "Better Decision Making",
+        "Enhanced Security",
+        "Reduced Operational Costs",
+      ],
+      services: [
+        "ERP Development",
+        "CRM Systems",
+        "Enterprise Portals",
+        "Workflow Automation",
+        "Data Management",
+      ],
     },
     {
       title: "Education & Learning",
       desc: "Smart solutions for smart learners.",
       icon: <FaGraduationCap />,
+      details:
+        "Modern educational platforms that enhance online learning experiences for students, teachers, and institutions.",
+
+      features: [
+        "E-Learning Platforms",
+        "Student Management",
+        "Live Classes",
+        "Online Assessments",
+        "Learning Analytics",
+      ],
+
+      benefits: [
+        "Better Student Engagement",
+        "Remote Learning Support",
+        "Improved Learning Outcomes",
+        "Easy Administration",
+        "Scalable Education Systems",
+      ],
+      services: [
+        "LMS Development",
+        "Virtual Classroom Solutions",
+        "Exam Portals",
+        "Student Apps",
+        "Educational Websites",
+      ],
     },
     {
       title: "Ecommerce & Retail",
       desc: "Scalable retail solutions.",
       icon: <FaShoppingCart />,
+      details:
+        "Comprehensive ecommerce platforms that help businesses sell products online and manage operations efficiently.",
+
+      features: [
+        "Online Store Setup",
+        "Payment Gateway Integration",
+        "Inventory Management",
+        "Order Tracking",
+        "Customer Dashboard",
+      ],
+
+      benefits: [
+        "Increased Sales",
+        "Global Reach",
+        "Improved Customer Experience",
+        "Easy Inventory Control",
+        "Higher Revenue",
+      ],
+      services: [
+        "Ecommerce Website Development",
+        "Marketplace Solutions",
+        "Retail Management Software",
+        "Mobile Shopping Apps",
+        "Payment Integration",
+      ],
     },
     {
       title: "Digital Marketing",
       desc: "Drive visibility and leads.",
       icon: <FaBullhorn />,
+      details:
+        "Digital marketing solutions focused on increasing brand awareness, customer engagement, and business growth.",
+
+      features: [
+        "SEO Optimization",
+        "Social Media Marketing",
+        "Email Campaigns",
+        "Content Marketing",
+        "Performance Analytics",
+      ],
+
+      benefits: [
+        "Higher Brand Visibility",
+        "Quality Lead Generation",
+        "Improved Conversion Rates",
+        "Better ROI",
+        "Customer Retention",
+      ],
+      services: [
+        "SEO Services",
+        "Social Media Management",
+        "Google Ads",
+        "Email Marketing",
+        "Content Creation",
+      ],
     },
     {
       title: "Social Networking",
       desc: "Connect your audience.",
       icon: <FaUsers />,
+      details:
+        "Build powerful online communities and social networking platforms with modern engagement features.",
+
+      features: [
+        "User Profiles",
+        "Real-Time Chat",
+        "Media Sharing",
+        "Groups & Communities",
+        "Notifications",
+      ],
+
+      benefits: [
+        "Stronger User Engagement",
+        "Community Building",
+        "Increased Retention",
+        "Real-Time Communication",
+        "Network Growth",
+      ],
+      services: [
+        "Social Media Platforms",
+        "Community Portals",
+        "Messaging Systems",
+        "Networking Apps",
+        "User Management",
+      ],
     },
     {
       title: "Healthcare & Fitness",
       desc: "Build wellness with tech.",
       icon: <FaHeartbeat />,
+      details:
+        "Technology-driven healthcare and fitness solutions that improve patient care and wellness management.",
+
+      features: [
+        "Appointment Scheduling",
+        "Health Tracking",
+        "Telemedicine",
+        "Fitness Monitoring",
+        "Patient Records",
+      ],
+
+      benefits: [
+        "Improved Patient Care",
+        "Better Accessibility",
+        "Efficient Management",
+        "Health Insights",
+        "Enhanced User Experience",
+      ],
+      services: [
+        "Healthcare Portals",
+        "Fitness Apps",
+        "Telemedicine Platforms",
+        "Patient Management Systems",
+        "Wellness Solutions",
+      ],
     },
     {
       title: "Event & Ticket",
       desc: "Manage your events seamlessly.",
       icon: <FaCalendarAlt />,
+      details:
+        "Complete event management solutions for planning, promotion, ticketing, and attendee engagement.",
+
+      features: [
+        "Online Registration",
+        "Ticket Booking",
+        "Event Scheduling",
+        "QR Verification",
+        "Analytics Dashboard",
+      ],
+
+      benefits: [
+        "Simplified Event Management",
+        "Improved Attendance",
+        "Automated Ticketing",
+        "Real-Time Monitoring",
+        "Better User Experience",
+      ],
+      services: [
+        "Event Websites",
+        "Ticket Booking Platforms",
+        "Conference Management",
+        "Event Apps",
+        "Registration Systems",
+      ],
     },
     {
       title: "Food & Beverage",
       desc: "Digitizing dining experiences.",
       icon: <FaUtensils />,
+      details:
+        "Technology solutions for restaurants, cafes, and food businesses to improve customer experience and operations.",
+
+      features: [
+        "Online Ordering",
+        "Table Reservation",
+        "Menu Management",
+        "Delivery Tracking",
+        "Customer Feedback",
+      ],
+
+      benefits: [
+        "Increased Orders",
+        "Faster Service",
+        "Improved Customer Satisfaction",
+        "Operational Efficiency",
+        "Revenue Growth",
+      ],
+      services: [
+        "Restaurant Websites",
+        "Food Delivery Apps",
+        "POS Systems",
+        "Reservation Platforms",
+        "Menu Management Solutions",
+      ],
     },
     {
       title: "Ticketing & Booking",
       desc: "Power travel and leisure.",
       icon: <FaTicketAlt />,
+      details:
+        "Advanced booking and reservation platforms for travel, hospitality, and entertainment businesses.",
+
+      features: [
+        "Online Reservations",
+        "Payment Integration",
+        "Booking Management",
+        "Customer Accounts",
+        "Reporting Tools",
+      ],
+
+      benefits: [
+        "Easy Booking Process",
+        "Higher Customer Satisfaction",
+        "Automated Operations",
+        "Increased Revenue",
+        "Better Resource Utilization",
+      ],
+      services: [
+        "Travel Booking Portals",
+        "Hotel Reservation Systems",
+        "Tour Management Solutions",
+        "Online Ticketing Platforms",
+        "Booking Mobile Apps",
+      ],
     },
   ];
 
@@ -204,7 +456,22 @@ function Industries() {
               font-size:18px !important;
               line-height:34px !important;
             }
+              
+.detailsBox::-webkit-scrollbar {
+  width: 6px;
+}
 
+.detailsBox::-webkit-scrollbar-thumb {
+  background: #2563ff;
+  border-radius: 20px;
+}
+  .rightPanel::-webkit-scrollbar {
+  width: 8px;
+}
+  .rightPanel::-webkit-scrollbar-thumb {
+  background: linear-gradient(#0ea5ff, #2563ff);
+  border-radius: 20px;
+}
             .rightPanel{
               padding:40px !important;
             }
@@ -220,7 +487,12 @@ function Industries() {
             .detailTitle{
               font-size:34px !important;
               line-height:46px !important;
-            }
+        }
+
+.rightPanel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
 
             .rightPanel{
               padding:30px !important;
@@ -339,8 +611,8 @@ function Industries() {
             >
               <div
                 style={{
-                  fontSize: "42px",
-                  marginBottom: "18px",
+                  fontSize: "30px",
+                  marginBottom: "12px",
                   color: active?.title === service.title ? "white" : "#0ea5ff",
                 }}
               >
@@ -350,8 +622,8 @@ function Industries() {
               <h3
                 className="serviceTitle"
                 style={{
-                  fontSize: "36px",
-                  marginBottom: "12px",
+                  fontSize: "24px",
+                  marginBottom: "8px",
                   fontWeight: "700",
                 }}
               >
@@ -361,8 +633,8 @@ function Industries() {
               <p
                 className="serviceDesc"
                 style={{
-                  fontSize: "20px",
-                  lineHeight: "34px",
+                  fontSize: "18px",
+                  lineHeight: "26px",
                   color:
                     active?.title === service.title
                       ? "rgba(255,255,255,0.92)"
@@ -380,13 +652,13 @@ function Industries() {
           className="rightPanel fadeUp"
           style={{
             flex: "1",
-            minHeight: "850px",
+            height: "850px",
             background: "rgba(255,255,255,0.78)",
             backdropFilter: "blur(12px)",
             borderRadius: "35px",
             padding: "70px",
             position: "relative",
-            overflow: "hidden",
+            overflowX: "hidden",
             minWidth: "320px",
             boxShadow: "0px 10px 40px rgba(0,0,0,0.08)",
             border: "1px solid rgba(255,255,255,0.6)",
@@ -460,6 +732,7 @@ function Industries() {
 
             <button
               className="exploreBtn"
+              onClick={() => setShowDetails(!showDetails)}
               style={{
                 marginTop: "45px",
                 padding: "18px 38px",
@@ -473,11 +746,97 @@ function Industries() {
                 boxShadow: "0px 12px 30px rgba(37,99,255,0.3)",
               }}
             >
-              Explore More
+              {showDetails ? "Hide Details" : "Explore More"}
             </button>
+            {showDetails && (
+              <div
+                className="detailsBox"
+                style={{
+                  marginTop: "40px",
+                  background: "#fff",
+                  padding: "30px",
+                  borderRadius: "20px",
+                  boxShadow: "0 10px 30px rgba(0,0,0,0.08)",
+                  maxHeight: "400px",
+                  overflowY: "auto",
+                }}
+              >
+                <h3
+                  style={{
+                    color: "#2563ff",
+                    marginBottom: "15px",
+                    fontSize: "28px",
+                  }}
+                >
+                  About This Service
+                </h3>
+
+                <p
+                  style={{
+                    color: "#555",
+                    lineHeight: "30px",
+                    marginBottom: "25px",
+                  }}
+                >
+                  {active.details}
+                </p>
+
+                {/* Features */}
+                <h3 style={{ color: "#2563ff" }}>Key Features</h3>
+
+                <ul style={{ marginBottom: "25px" }}>
+                  {active.features?.map((item, index) => (
+                    <li
+                      key={index}
+                      style={{
+                        marginBottom: "10px",
+                        color: "#444",
+                      }}
+                    >
+                      ✓ {item}
+                    </li>
+                  ))}
+                </ul>
+
+                {/* Benefits */}
+                <h3 style={{ color: "#2563ff" }}>Benefits</h3>
+
+                <ul style={{ marginBottom: "25px" }}>
+                  {active.benefits?.map((item, index) => (
+                    <li
+                      key={index}
+                      style={{
+                        marginBottom: "10px",
+                        color: "#444",
+                      }}
+                    >
+                      ★ {item}
+                    </li>
+                  ))}
+                </ul>
+
+                {/* Services */}
+                <h3 style={{ color: "#2563ff" }}>Services Included</h3>
+
+                <ul>
+                  {active.services?.map((item, index) => (
+                    <li
+                      key={index}
+                      style={{
+                        marginBottom: "10px",
+                        color: "#444",
+                      }}
+                    >
+                      ➜ {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
         </div>
       </div>
+      <FloatingButtons />
     </div>
   );
 }

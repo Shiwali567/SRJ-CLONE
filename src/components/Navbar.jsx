@@ -14,6 +14,8 @@ function Navbar() {
     { name: "INDUSTRIES", path: "/Industries" },
     { name: "BLOG", path: "/Blog" },
     { name: "PRICING", path: "/Pricing" },
+    { name: "LOGIN", path: "/login" },
+    { name: "REGISTER", path: "/register" },
   ];
 
   return (
@@ -21,10 +23,10 @@ function Navbar() {
       <nav
         style={{
           width: "100%",
-          background: "rgba(255,255,255,0.95)",
-          backdropFilter: "blur(18px)",
-          boxShadow: "0 4px 25px rgba(0,0,0,0.05)",
-          borderBottom: "1px solid #edf2f7",
+          background: "rgba(255,255,255,0.97)",
+          backdropFilter: "blur(20px)",
+          boxShadow: "0 6px 30px rgba(0,0,0,0.08)",
+          borderBottom: "1px solid #ececec",
           position: "fixed",
           top: 0,
           left: 0,
@@ -61,8 +63,8 @@ function Navbar() {
                 src={Logo}
                 alt="logo"
                 style={{
-                  width: "70px",
-                  height: "70px",
+                  width: "95px",
+                  height: "95px",
                   objectFit: "contain",
                 }}
               />
@@ -70,19 +72,21 @@ function Navbar() {
               <div>
                 <h1
                   style={{
-                    fontSize: "18px",
+                    fontSize: "20px",
                     fontWeight: "900",
                     margin: 0,
-                    lineHeight: 1,
+                    lineHeight: 1.1,
+                    letterSpacing: "0.5px",
                   }}
                 >
                   <span style={{ color: "#111827" }}>SRJ </span>
 
                   <span
                     style={{
-                      background: "linear-gradient(to right,#ff8a00,#ffb347)",
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
+                      color: "#ff8a00",
+                      // background: "linear-gradient(to right,#ff8a00,#ffb347)",
+                      // WebkitBackgroundClip: "text",
+                      // WebkitTextFillColor: "transparent",
                     }}
                   >
                     GLOBAL
@@ -91,10 +95,11 @@ function Navbar() {
 
                 <h2
                   style={{
-                    fontSize: "18px",
-                    fontWeight: "700",
+                    fontSize: "20px",
+                    fontWeight: "900",
                     color: "#111827",
-                    marginTop: "2px",
+                    margin: "0px",
+                    lineHeight: "1.1",
                   }}
                 >
                   TECHNOLOGIES
@@ -111,14 +116,32 @@ function Navbar() {
                   <Link
                     key={index}
                     to={item.path}
+                    onClick={() => setMenuOpen(false)}
+                    onMouseEnter={(e) => {
+                      if (!active) {
+                        e.target.style.background = "#f3f4f6";
+                      }
+                    }}
+                    onMouseLeave={(e) => {
+                      if (!active) {
+                        e.target.style.background = "transparent";
+                      }
+                    }}
                     style={{
                       position: "relative",
-                      color: active ? "#1452ff" : "#374151",
-                      fontSize: "18px", // SIZE BADA KIYA
-                      fontWeight: "800",
+                      color: active ? "#1452ff" : "#4b5563",
+                      fontSize: "17px",
+                      fontWeight: "700",
                       textDecoration: "none",
-                      paddingBottom: "8px",
-                      transition: "0.3s",
+                      padding: "10px 14px",
+                      borderRadius: "10px",
+                      background: active
+                        ? "rgba(20,82,255,0.12)"
+                        : "transparent",
+                      border: active
+                        ? "1px solid #1452ff"
+                        : "1px solid transparent",
+                      transition: "all 0.3s ease",
                     }}
                   >
                     {item.name}
@@ -132,14 +155,15 @@ function Navbar() {
               <Link
                 to="/contact"
                 style={{
-                  background:
-                    "linear-gradient(to right,#1452ff,#4f7cff,#7b61ff)",
+                  background: "linear-gradient(90deg,#1452ff,#2468ff)",
+                  // "linear-gradient(to right,#1452ff,#4f7cff,#7b61ff)",
                   color: "white",
                   fontSize: "16px",
                   fontWeight: "700",
-                  padding: "15px 28px",
-                  borderRadius: "14px",
+                  padding: "14px 30px",
+                  borderRadius: "10px",
                   textDecoration: "none",
+                  boxShadow: "0 8px 20px rgba(20,82,255,0.25)",
                 }}
               >
                 CONTACT US
@@ -175,22 +199,43 @@ function Navbar() {
               gap: "20px",
             }}
           >
-            {navLinks.map((item, index) => (
-              <Link
-                key={index}
-                to={item.path}
-                onClick={() => setMenuOpen(false)}
-                style={{
-                  textDecoration: "none",
-                  color:
-                    location.pathname === item.path ? "#1452ff" : "#111827",
-                  fontSize: "19px", // MOBILE SIZE BADA
-                  fontWeight: "700",
-                }}
-              >
-                {item.name}
-              </Link>
-            ))}
+            {navLinks.map((item, index) => {
+              const active = location.pathname === item.path;
+
+              return (
+                <Link
+                  key={index}
+                  to={item.path}
+                  onClick={() => setMenuOpen(false)}
+                  onMouseEnter={(e) => {
+                    if (!active) {
+                      e.target.style.background = "#f3f4f6";
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!active) {
+                      e.target.style.background = "transparent";
+                    }
+                  }}
+                  style={{
+                    position: "relative",
+                    color: active ? "#1452ff" : "#4b5563",
+                    fontSize: "17px",
+                    fontWeight: "700",
+                    textDecoration: "none",
+                    padding: "12px 20px",
+                    borderRadius: "10px",
+                    background: active ? "rgba(20,82,255,0.12)" : "transparent",
+                    border: active
+                      ? "1px solid #1452ff"
+                      : "1px solid transparent",
+                    transition: "all 0.3s ease",
+                  }}
+                >
+                  {item.name}
+                </Link>
+              );
+            })}
           </div>
         )}
 
@@ -200,7 +245,7 @@ function Navbar() {
             .desktopMenu{
               display:flex;
               align-items:center;
-              gap:35px;
+              gap:15px;
             }
 
             @media(max-width:1000px){

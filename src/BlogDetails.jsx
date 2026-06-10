@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
-
+import FloatingButtons from "./FloatingButtons";
 function BlogDetails() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -174,6 +174,7 @@ function BlogDetails() {
           <p className="blogDesc">{blog.fullDesc}</p>
         </div>
       </div>
+      <FloatingButtons />
     </div>
   );
 }

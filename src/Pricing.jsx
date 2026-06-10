@@ -1,6 +1,9 @@
 import { useState } from "react";
+import FloatingButtons from "./FloatingButtons";
+import { useNavigate } from "react-router-dom";
 
 function Pricing() {
+  const navigate = useNavigate();
   const categories = [
     "Website",
     "Mobile App",
@@ -18,21 +21,25 @@ function Pricing() {
   const plans = [
     {
       name: "Basic",
+      path: "/pricing/basic",
       price: 14999,
       features: ["4–5 pages", "Contact form", "Responsive", "Basic SEO"],
     },
     {
       name: "Standard",
+      path: "/pricing/standard",
       price: 24999,
       features: ["7–10 pages", "WhatsApp + Map", "Dynamic sections"],
     },
     {
       name: "Advanced",
+      path: "/pricing/advanced",
       price: 39999,
       features: ["UI/UX", "Animations", "Blog", "Chatbot", "Domain + Hosting"],
     },
     {
       name: "Premium",
+      path: "/pricing/premium",
       price: 69999,
       features: ["E-commerce/Booking", "Admin Panel", "Analytics"],
     },
@@ -389,7 +396,10 @@ function Pricing() {
             {plans.map((plan, index) => (
               <div
                 key={index}
-                onClick={() => setSelectedPlan(plan)}
+                onClick={() => {
+                  setSelectedPlan(plan);
+                  navigate(plan.path);
+                }}
                 style={{
                   background:
                     selectedPlan.name === plan.name
@@ -698,6 +708,7 @@ function Pricing() {
             <li>Long-term growth focused development</li>
           </ul>
         </div>
+        <FloatingButtons />
       </div>
     </>
   );
